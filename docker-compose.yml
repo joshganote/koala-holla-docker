@@ -1,7 +1,6 @@
 version: '3'
 
-services:
-    server: 
+services: 
       database:
         image: postgres:latest
         restart: always
@@ -15,4 +14,23 @@ services:
         volumes:
             - ./database.sql:/docker-entrypoint-initdb.d/10-init.sql
             - ./start-data.sql:/docker-entrypoint-initdb.d/20-start.sql
+      server:
+        build:
+          context: ./server
+        ports:
+          - 5000:5000
+        environment:
+          PORT_DB: 5432
+          POSTGRES_USER: dockerkoala
+          POSTGRES_PASSWORD: holla285
+          POSTGRES_DB: koala_holla
+          POSTGRES_HOST: database
+        volumes:
+          - './server:/app/server'
+          - '/app/server/node_modules'
+        depends_on:
+          - database
+        command: npm run start
+
+      
       

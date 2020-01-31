@@ -3,7 +3,7 @@ FROM node: current-alpine
 
 # Creating App Directories
 RUN mkdri -p /app/server
-WORKDIR /app/server
+WORKDIR /app
 
 COPY package.json /app
 
