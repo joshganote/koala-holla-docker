@@ -2,7 +2,7 @@
 FROM node:current-alpine
 
 # Creating App Directories
-RUN mkdir -p /app/server
+RUN mkdir -p /app
 WORKDIR /app
 
 COPY package.json /app
