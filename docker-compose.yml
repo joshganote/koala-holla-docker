@@ -16,7 +16,8 @@ services:
             - ./start-data.sql:/docker-entrypoint-initdb.d/20-start.sql
       server:
         build:
-          context: ./server
+          context: ./
+          dockerfile: ./Dockerfile.server
         ports:
           - 5000:5000
         environment:

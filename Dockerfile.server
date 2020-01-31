@@ -1,8 +1,8 @@
 # Base container image
-FROM node: current-alpine
+FROM node:current-alpine
 
 # Creating App Directories
-RUN mkdri -p /app/server
+RUN mkdir -p /app/server
 WORKDIR /app
 
 COPY package.json /app
