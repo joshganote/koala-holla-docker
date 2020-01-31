@@ -19,8 +19,9 @@ services:
           context: ./
           dockerfile: ./Dockerfile.server
         ports:
-          - 5000:5000
+          - 8080:8080
         environment:
+          PORT: ${PORT}
           PORT_DB: 5432
           POSTGRES_USER: dockerkoala
           POSTGRES_PASSWORD: holla285
@@ -28,7 +29,7 @@ services:
           POSTGRES_HOST: database
         volumes:
           - './server:/app/server'
-          - '/app/server/node_modules'
+          - '/app/node_modules'
         depends_on:
           - database
         command: npm run start
