@@ -1,0 +1,14 @@
+# Base container image
+FROM node: current-alpine
+
+# Creating App Directories
+RUN mkdri -p /app/server
+WORKDIR /app/server
+
+COPY package.json /app
+
+RUN npm install
+
+COPY . /app
+
+CMD ["npm", "start"]
